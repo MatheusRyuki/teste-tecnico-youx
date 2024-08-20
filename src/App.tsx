@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import PatientRegistrationPage from "./pages/PatientRegistrationPage";
+import PatientListPage from "./pages/PatientListPage";
+import PatientMapPage from "./pages/PatientMapPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "react-oauth2-code-pkce";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider
+      authConfig={{
+        clientId: "YOUR_CLIENT_ID",
+        authorizationEndpoint: "https://authorization-server.com/auth",
+        tokenEndpoint: "https://authorization-server.com/token",
+        redirectUri: "http://localhost:3000/callback",
+        scope: "openid profile email",
+      }}
+    >
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/cadastro"
+            element={
+              <ProtectedRoute>
+                <PatientRegistrationPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/pacientes"
+            element={
+              <ProtectedRoute>
+                <PatientListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mapa"
+            element={
+              <ProtectedRoute>
+                <PatientMapPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <PatientListPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
