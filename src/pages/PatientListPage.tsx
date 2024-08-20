@@ -13,7 +13,7 @@ const PatientListPage: React.FC = () => {
     <div>
       <h1>Bem-vindo(a) à Clínica</h1>
       <p>Gerencie os pacientes cadastrados ou adicione novos pacientes.</p>
-      <button onClick={handleAddPatient}>Cadastrar Novo Paciente</button>
+      <button onClick={handleAddPatient} style={{ marginBottom: '20px' }}>Cadastrar Novo Paciente</button>
       <PatientList />
     </div>
   );

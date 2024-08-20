@@ -3,8 +3,12 @@ import axios from 'axios';
 
 interface Patient {
   id: number;
-  name: string;
-  age: number;
+  nome: string;
+  cpf: string;
+  dataNascimento: string;
+  peso: number;
+  altura: number;
+  uf: string;
 }
 
 const PatientList: React.FC = () => {
@@ -16,7 +20,7 @@ const PatientList: React.FC = () => {
         const response = await axios.get('https://api.fake.com/patients');
         setPatients(response.data);
       } catch (error) {
-        // Tratar erros de API
+        console.error('Erro ao buscar pacientes:', error);
       }
     };
 
@@ -26,11 +30,30 @@ const PatientList: React.FC = () => {
   return (
     <div>
       <h2>Lista de Pacientes</h2>
-      <ul>
-        {patients.map((patient) => (
-          <li key={patient.id}>{patient.name} - {patient.age} anos</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de Nascimento</th>
+            <th>Peso (kg)</th>
+            <th>Altura (m)</th>
+            <th>UF</th>
+          </tr>
+        </thead>
+        <tbody>
+          {patients.map((patient) => (
+            <tr key={patient.id}>
+              <td>{patient.nome}</td>
+              <td>{patient.cpf}</td>
+              <td>{patient.dataNascimento}</td>
+              <td>{patient.peso}</td>
+              <td>{patient.altura}</td>
+              <td>{patient.uf}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
