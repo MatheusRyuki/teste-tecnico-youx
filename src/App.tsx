@@ -5,19 +5,11 @@ import PatientRegistrationPage from "./pages/PatientRegistrationPage";
 import PatientListPage from "./pages/PatientListPage";
 import PatientMapPage from "./pages/PatientMapPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthProvider } from "react-oauth2-code-pkce";
+import AuthProvider from "./auth/AuthProvider";
 
 const App: React.FC = () => {
   return (
-    <AuthProvider
-      authConfig={{
-        clientId: "YOUR_CLIENT_ID",
-        authorizationEndpoint: "https://authorization-server.com/auth",
-        tokenEndpoint: "https://authorization-server.com/token",
-        redirectUri: "http://localhost:3000/callback",
-        scope: "openid profile email",
-      }}
-    >
+    <AuthProvider>
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />

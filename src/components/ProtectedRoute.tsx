@@ -1,15 +1,20 @@
-import React, { useContext } from "react";
-import { Navigate } from "react-router-dom";
-import { AuthContext } from "react-oauth2-code-pkce";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { tokenData } = useContext(AuthContext);
+  const { isAuthenticated, isLoading } = useAuth0();
 
-  if (!tokenData) {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(isAuthenticated);
+  if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
 
