@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/PatientForm.css"; // Usando o mesmo arquivo de estilo
 
 const NurseForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -48,9 +49,11 @@ const NurseForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {successMessage && <div>{successMessage}</div>}
-      <div>
+    <form onSubmit={handleSubmit} className="patient-form">
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
+      <div className="form-group">
         <label>Nome:</label>
         <input
           type="text"
@@ -58,9 +61,9 @@ const NurseForm: React.FC = () => {
           value={formData.nome}
           onChange={handleChange}
         />
-        {errors.nome && <span>{errors.nome}</span>}
+        {errors.nome && <span className="error">{errors.nome}</span>}
       </div>
-      <div>
+      <div className="form-group">
         <label>CPF:</label>
         <input
           type="text"
@@ -68,9 +71,9 @@ const NurseForm: React.FC = () => {
           value={formData.cpf}
           onChange={handleChange}
         />
-        {errors.cpf && <span>{errors.cpf}</span>}
+        {errors.cpf && <span className="error">{errors.cpf}</span>}
       </div>
-      <div>
+      <div className="form-group">
         <label>Senha:</label>
         <input
           type="password"
@@ -78,9 +81,11 @@ const NurseForm: React.FC = () => {
           value={formData.senha}
           onChange={handleChange}
         />
-        {errors.senha && <span>{errors.senha}</span>}
+        {errors.senha && <span className="error">{errors.senha}</span>}
       </div>
-      <button type="submit">Cadastrar</button>
+      <button type="submit" className="submit-button">
+        Cadastrar
+      </button>
     </form>
   );
 };
