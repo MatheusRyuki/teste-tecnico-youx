@@ -11,7 +11,7 @@ Antes de começar, você precisará ter as seguintes ferramentas instaladas em s
 - Maven
 - MongoDB Atlas (ou uma instância local do MongoDB)
 
-## Configuração do Backend (Spring Boot)
+## Configuração do projeto (Frontend React.js, Backend Spring-boot)
 
 1. **Clone o repositório:**
    git clone https://github.com/MatheusRyuki/teste-tecnico-youx.git
