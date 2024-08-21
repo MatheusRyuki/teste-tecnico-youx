@@ -1,0 +1,32 @@
+.patient-map-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .patient-map-page h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .patient-map-page .leaflet-container {
+    width: 100%;
+    height: 500px;
+  }
+  
+  @media (max-width: 768px) {
+    .patient-map-page {
+      padding: 10px;
+    }
+  
+    .patient-map-page h1 {
+      font-size: 1.5em;
+    }
+  
+    .patient-map-page .leaflet-container {
+      height: 300px;
+    }
+  }
+  

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
-import "../styles/PatientMap.css"
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import '../styles/PatientMap.css';
 
 interface Patient {
   id: string;
@@ -77,7 +77,7 @@ const PatientMap: React.FC = () => {
   }, []);
 
   return (
-    <MapContainer center={[-15.7801, -47.9292]} zoom={4} style={{ height: '500px', width: '100%' }}>
+    <MapContainer center={[-15.7801, -47.9292]} zoom={4} className="leaflet-container">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {stateData.map(state => (
         <Marker key={state.uf} position={state.coordinates} icon={L.divIcon({ html: `<div>${state.count}</div>`, className: 'custom-icon' })}>
