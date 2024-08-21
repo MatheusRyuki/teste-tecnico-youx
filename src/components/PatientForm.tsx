@@ -53,7 +53,7 @@ const PatientForm: React.FC = () => {
       setErrors(validationErrors);
     } else {
       try {
-        await axios.post("https://api.fake.com/patients", formData);
+        await axios.post("http://localhost:8080/api/pacientes", formData);
         setSuccessMessage("Paciente cadastrado com sucesso!");
         setFormData({
           nome: "",

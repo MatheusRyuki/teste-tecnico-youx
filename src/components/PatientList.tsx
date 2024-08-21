@@ -13,19 +13,32 @@ interface Patient {
 
 const PatientList: React.FC = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('https://api.fake.com/patients');
+        const response = await axios.get('http://localhost:8080/api/pacientes');
         setPatients(response.data);
       } catch (error) {
+        setError('Erro ao buscar pacientes. Tente novamente mais tarde.');
         console.error('Erro ao buscar pacientes:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPatients();
   }, []);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
@@ -46,7 +59,7 @@ const PatientList: React.FC = () => {
             <tr key={patient.id}>
               <td>{patient.nome}</td>
               <td>{patient.cpf}</td>
-              <td>{patient.dataNascimento}</td>
+              <td>{new Date(patient.dataNascimento).toLocaleDateString()}</td>
               <td>{patient.peso}</td>
               <td>{patient.altura}</td>
               <td>{patient.uf}</td>
