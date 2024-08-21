@@ -82,7 +82,8 @@ const PatientMap: React.FC = () => {
       {stateData.map(state => (
         <Marker key={state.uf} position={state.coordinates} icon={L.divIcon({ html: `<div>${state.count}</div>`, className: 'custom-icon' })}>
           <Popup>
-            {state.uf}: {state.count} pacientes
+            <strong>{state.uf}</strong><br />
+            {state.count} pacientes
           </Popup>
         </Marker>
       ))}

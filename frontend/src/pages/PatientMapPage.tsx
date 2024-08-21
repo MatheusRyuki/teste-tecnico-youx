@@ -5,7 +5,10 @@ import '../styles/PatientMapPage.css';
 const PatientMapPage: React.FC = () => {
   return (
     <div className="patient-map-page">
-      <h1>Mapa de Pacientes</h1>
+      <header className="header">
+        <h1>Mapa de Pacientes</h1>
+        <p>Visualize a distribuição dos pacientes cadastrados por estado.</p>
+      </header>
       <PatientMap />
     </div>
   );
