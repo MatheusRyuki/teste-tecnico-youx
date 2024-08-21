@@ -6,6 +6,7 @@ import PatientListPage from "./pages/PatientListPage";
 import PatientMapPage from "./pages/PatientMapPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthProvider from "./auth/AuthProvider";
+import DashboardPage from "./pages/Dashboard";
 
 const App: React.FC = () => {
   return (
@@ -41,7 +42,7 @@ const App: React.FC = () => {
             path="/"
             element={
               <ProtectedRoute>
-                <PatientListPage />
+                <DashboardPage />
               </ProtectedRoute>
             }
           />
