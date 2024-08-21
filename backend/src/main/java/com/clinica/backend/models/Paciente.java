@@ -1,13 +1,13 @@
 package com.clinica.backend.models;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 
-@Entity
+@Document(collection = "pacientes")
 public class Paciente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String nome;
     private String cpf;
@@ -16,11 +16,11 @@ public class Paciente {
     private Double altura;
     private String uf;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

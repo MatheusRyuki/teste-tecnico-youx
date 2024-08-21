@@ -1,7 +1,7 @@
 package com.clinica.backend.repositories;
 
 import com.clinica.backend.models.Paciente;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+public interface PacienteRepository extends MongoRepository<Paciente, String> {
 }
