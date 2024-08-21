@@ -1,0 +1,18 @@
+.registration-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .registration-page h1 {
+    margin-bottom: 20px;
+  }
+  
+  .registration-page p {
+    margin-bottom: 20px;
+  }
+  
+  .registration-page form {
+    display: inline-block;
+    text-align: left;
+  }
+  

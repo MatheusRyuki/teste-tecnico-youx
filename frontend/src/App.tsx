@@ -4,14 +4,18 @@ import LoginPage from "./pages/LoginPage";
 import PatientRegistrationPage from "./pages/PatientRegistrationPage";
 import PatientListPage from "./pages/PatientListPage";
 import PatientMapPage from "./pages/PatientMapPage";
+import NurseRegistrationPage from "./pages/NurseRegistrationPage";
+import DoctorRegistrationPage from "./pages/DoctorRegistrationPage";
+import DashboardPage from "./pages/DashboardPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthProvider from "./auth/AuthProvider";
-import DashboardPage from "./pages/Dashboard";
+import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
@@ -35,6 +39,22 @@ const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <PatientMapPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cadastro-enfermeiro"
+            element={
+              <ProtectedRoute>
+                <NurseRegistrationPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cadastro-medico"
+            element={
+              <ProtectedRoute>
+                <DoctorRegistrationPage />
               </ProtectedRoute>
             }
           />
