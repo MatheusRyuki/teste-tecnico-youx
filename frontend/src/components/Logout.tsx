@@ -5,9 +5,9 @@ const Logout: React.FC = () => {
   const { logout } = useAuth0();
 
   return (
-    <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+    <span onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
       Logout
-    </button>
+    </span>
   );
 };
 
