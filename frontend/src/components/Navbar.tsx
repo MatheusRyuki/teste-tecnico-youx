@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
 import '../styles/Navbar.css';
 
 const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="navbar">
-      <ul>
+      <div className="navbar-header">
+        <button className="navbar-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
+      </div>
+      <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
         <li>
-          <Link to="/pacientes">Lista de Pacientes</Link>
+          <Link to="/pacientes" onClick={toggleMenu}>Lista de Pacientes</Link>
         </li>
         <li>
-          <Link to="/cadastro">Cadastrar Paciente</Link>
+          <Link to="/cadastro" onClick={toggleMenu}>Cadastrar Paciente</Link>
         </li>
         <li>
-          <Link to="/mapa">Mapa de Pacientes</Link>
+          <Link to="/mapa" onClick={toggleMenu}>Mapa de Pacientes</Link>
         </li>
         <li>
-          <Link to="/cadastro-enfermeiro">Cadastrar Enfermeiro</Link>
+          <Link to="/cadastro-enfermeiro" onClick={toggleMenu}>Cadastrar Enfermeiro</Link>
         </li>
         <li>
-          <Link to="/cadastro-medico">Cadastrar Médico</Link>
+          <Link to="/cadastro-medico" onClick={toggleMenu}>Cadastrar Médico</Link>
         </li>
         <li>
           <Logout />
